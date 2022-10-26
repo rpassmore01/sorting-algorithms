@@ -30,28 +30,49 @@ void siftUp(int arr[], int start, int end)
     }
 }
 
-void heapify(int arr[], int count)
+void heapify(int arr[], int N, int i)
 {
-    int end = 1;
-
-    while (end < count)
-    {
-        siftUp(arr, 0, end);
-        end = end + 1;
+    // Find largest among root, left child and right child
+ 
+    int largest = i;
+ 
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+ 
+    // If left child is larger than root
+    if (left < N && arr[left] > arr[largest])
+ 
+        largest = left;
+ 
+    // If right child is larger than largest
+    if (right < N && arr[right] > arr[largest])
+ 
+        largest = right;
+ 
+    // Swap and continue heapifying if root is not largest
+    if (largest != i) {
+ 
+        swap(&arr[i], &arr[largest]);
+ 
+        heapify(arr, N, largest);
     }
 }
-
-void heapSort(int arr[], int count)
+ 
+// Main function to do heap sort
+void heapSort(int arr[], int N)
 {
-    heapify(arr, count);
-
-    int end = count - 1;
-
-    while (end > 0)
-    {
-        swap(&arr[end], &arr[0]);
-        heapify(arr, end);
-        end = end - 1;
+ 
+    // Build initial heap
+    for (int i = N / 2 - 1; i >= 0; i--)
+ 
+        heapify(arr, N, i);
+ 
+    for (int i = N - 1; i >= 0; i--) {
+ 
+        swap(&arr[0], &arr[i]);
+ 
+        // Heapify array agian
+        heapify(arr, i, 0);
     }
 }
 
@@ -76,7 +97,7 @@ int main()
 
     cout << endl;
 
-    heapify(sortingArray, 1000);
+    heapSort(sortingArray, 1000);
 
     for (int i = 0; i < 1000; i++)
     {

@@ -175,51 +175,49 @@ void quickSort(int arr[], int low, int high)
     arr[] --> array to be sorted,
     count --> length of array*/
 
-// Goes through heap array and moves larger items further forward
-void siftUp(int arr[], int start, int end)
+void heapify(int arr[], int N, int i)
 {
-    int child = end;
-    while (child > start)
-    {
-        int parent = (child - 1) / 2;
-        if (arr[parent] < arr[child])
-        {
-            swap(&arr[parent], &arr[child]);
-            child = parent;
-        }
-        else
-        {
-            return;
-        }
+    // Find largest among root, left child and right child
+ 
+    int largest = i;
+ 
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+ 
+    // If left child is larger than root
+    if (left < N && arr[left] > arr[largest])
+ 
+        largest = left;
+ 
+    // If right child is larger than largest
+    if (right < N && arr[right] > arr[largest])
+ 
+        largest = right;
+ 
+    // Swap and continue heapifying if root is not largest
+    if (largest != i) {
+ 
+        swap(&arr[i], &arr[largest]);
+ 
+        heapify(arr, N, largest);
     }
 }
-
-// Turns array into a heap
-void heapify(int arr[], int count)
+ 
+// Main function to do heap sort
+void heapSort(int arr[], int N)
 {
-    int end = 1;
-
-    while (end < count)
-    {
-        siftUp(arr, 0, end);
-        end = end + 1;
-    }
-}
-
-// Implements heapsort algorithm
-void heapSort(int arr[], int count)
-{
-    // Initially turns array into a heap
-    heapify(arr, count);
-
-    int end = count - 1;
-
-    while (end > 0)
-    {
-        // Since array is a heap
-        swap(&arr[end], &arr[0]);
-        heapify(arr, end);
-        end = end - 1;
+ 
+    // Build initial heap
+    for (int i = N / 2 - 1; i >= 0; i--)
+ 
+        heapify(arr, N, i);
+ 
+    for (int i = N - 1; i >= 0; i--) {
+ 
+        swap(&arr[0], &arr[i]);
+ 
+        // Heapify array agian
+        heapify(arr, i, 0);
     }
 }
 
@@ -227,9 +225,9 @@ int main()
 {
     // Load in your data into an appropriate structure
     // You will have to load in different amounts of data for the different trials
-    int length = 100000;
+    int length = 400000;
     string currText = "";
-    ifstream inputFile("./sorting-data/data100000.txt");
+    ifstream inputFile("./sorting-data/data400000.txt");
     int sortingArray[length];
     int counter = 0;
 
@@ -243,7 +241,7 @@ int main()
 
     // Note: this code must actually do something
     //  call your function (see functions above), you'll have to measure each separately
-    partition(sortingArray, 0, length-1);
+    selectionSort(sortingArray, length);
     clock_t end = clock();
 
     for (int i = length-1000; i < length; i++)
