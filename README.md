@@ -32,5 +32,4 @@ Selection sort has a constant time complexity of O(n^2). This is because for eve
 
 ## Merge
 The merge sort algorithm splits the array to sort in half as evenly as possible, then keeps splitting the sub-arrays in half until there is only 1 element in each sub-array. The algorithm then compares each adjacent sub-array, from the bottom up, and rebuilds the parent array by merging the sub-arrays in order. These merges continue until you are left with a sorted array.   
-Merge sort has a constant time complexity of O(n log(n)). 
-
+Merge sort has a constant time complexity of O(n log(n)). We can visualize this by looking at how the initial array will get broken down. The first sub-layer will contain two sub-arrays since the initial array was only split in half once. The second sub-layer will have four sub-arrays. This continues until you have n sub-arrays. Since the merge of every sub-layer takes O(n) time, merge sort will take O(nh) time where h is equal to the number of sub-layers. However, it would be more useful for us to express h in terms of n. We know that the number of sub-arrays doubles for every layer deeper you do, which means we can derive this equation: n = 2^h. When solving for h we get: h = log<sub>2</sub>(n). Finally, h can be subbed for log(n) in the initial equation giving us O(n log(n)).
