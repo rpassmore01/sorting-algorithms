@@ -241,7 +241,7 @@ int main()
 
     // Note: this code must actually do something
     //  call your function (see functions above), you'll have to measure each separately
-    selectionSort(sortingArray, length);
+    heapSort(sortingArray, length);
     clock_t end = clock();
 
     for (int i = length-1000; i < length; i++)
