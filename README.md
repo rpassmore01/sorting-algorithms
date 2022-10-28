@@ -44,11 +44,11 @@ Quick sort has an average time complexity of O(n log(n)). This is because on ave
 However, quick sort is interesting because in the worst case it will have a time complexity of (O^2). This is because in the worst case the pivot will either be the largest value or smallest value in the array. If the largest or smallest value is the pivot in the first iteration then one sub-array will have n-1 elements and the other sub-array will only have 1 element. If this happens all the way through the algorithm then it will take n levels to sort the algorithm. In that case it would take the algorithm O((n)(n)) or O(n^2) time to complete.
 
 ## Heap Sort
-To understand how heap sort works, you must first understand the heap data structure. A heap, or more specifically max heap in this case, is a data structure that can be represented as a tree of nodes. Each node has a maximum of two children that are smaller than the parent. A max heap could look like the following:
-                12
-               /  \
-              8    10
-             / \  /  \
+To understand how heap sort works, you must first understand the heap data structure. A heap, or more specifically max heap in this case, is a data structure that can be represented as a tree of nodes. Each node has a maximum of two children that are smaller than the parent. A max heap could look like the following:      
+                12   
+               /  \   
+              8    10   
+             / \  /  \   
             2   4 5   6   
 However, a heap can also be represented as an array. The heap above would look like the following as an array: `{[12],[8],[10],[2],[4],[5],[6]}`. The root node is at the start and it's children are below that. Then the children of those nodes follow. Since the largest number is always at the start of the array, heap sort moves the root node to the end, rebuilds the heap and repeats to sort the array.   
    
