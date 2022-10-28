@@ -171,52 +171,51 @@ void quickSort(int arr[], int low, int high)
     }
 }
 
+// Turns array into a max heap in place
+void heapify(int arr[], int n, int i)
+{
+    int largest = i;
+
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    // If left child is larger than largest
+    if (left < n && arr[left] > arr[largest])
+
+        largest = left;
+
+    // If right child is larger than largest
+    if (right < n && arr[right] > arr[largest])
+
+        largest = right;
+
+    // Swap parent node for either left or right child if parent is not larger
+    if (largest != i)
+    {
+
+        swap(&arr[i], &arr[largest]);
+
+        heapify(arr, n, largest);
+    }
+}
+
 /*  Heap sort
     arr[] --> array to be sorted,
     count --> length of array*/
+void heapSort(int arr[], int n)
+{
 
-void heapify(int arr[], int N, int i)
-{
-    // Find largest among root, left child and right child
- 
-    int largest = i;
- 
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
- 
-    // If left child is larger than root
-    if (left < N && arr[left] > arr[largest])
- 
-        largest = left;
- 
-    // If right child is larger than largest
-    if (right < N && arr[right] > arr[largest])
- 
-        largest = right;
- 
-    // Swap and continue heapifying if root is not largest
-    if (largest != i) {
- 
-        swap(&arr[i], &arr[largest]);
- 
-        heapify(arr, N, largest);
-    }
-}
- 
-// Main function to do heap sort
-void heapSort(int arr[], int N)
-{
- 
-    // Build initial heap
-    for (int i = N / 2 - 1; i >= 0; i--)
- 
-        heapify(arr, N, i);
- 
-    for (int i = N - 1; i >= 0; i--) {
- 
+    // Build initial max heap
+    for (int i = n / 2 - 1; i >= 0; i--)
+
+        heapify(arr, n, i);
+
+    for (int i = n - 1; i >= 0; i--)
+    {
+
+        // sway root node with current last node
         swap(&arr[0], &arr[i]);
- 
-        // Heapify array agian
+
         heapify(arr, i, 0);
     }
 }
@@ -244,7 +243,7 @@ int main()
     heapSort(sortingArray, length);
     clock_t end = clock();
 
-    for (int i = length-1000; i < length; i++)
+    for (int i = length - 1000; i < length; i++)
     {
         cout << sortingArray[i] << endl;
     }

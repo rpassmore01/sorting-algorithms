@@ -45,11 +45,11 @@ However, quick sort is interesting because in the worst case it will have a time
 
 ## Heap Sort
 To understand how heap sort works, you must first understand the heap data structure. A heap, or more specifically max heap in this case, is a data structure that can be represented as a tree of nodes. Each node has a maximum of two children that are smaller than the parent. A max heap could look like the following:      
-                12   
-               /  \   
-              8    10   
-             / \  /  \   
-            2   4 5   6   
+&emsp;&nbsp;12   
+&emsp;&nbsp;/  \   
+&nbsp;&nbsp;&nbsp;8    10   
+&nbsp;&nbsp;&nbsp;/ \  /  \   
+&nbsp;2   4 5   6   
 However, a heap can also be represented as an array. The heap above would look like the following as an array: `{[12],[8],[10],[2],[4],[5],[6]}`. The root node is at the start and it's children are below that. Then the children of those nodes follow. Since the largest number is always at the start of the array, heap sort moves the root node to the end, rebuilds the heap and repeats to sort the array.   
    
 The heapify algorithm turns a unsorted array into a heap. This algorithm works from the bottom of the heap upwards and checks to make sure each parent child relationship is valid. Every time the size of the array doubles there is only one more layer added. This means that n = 2^h or h = log<sub>2</sub>(n). Since the heapify algorithm runs n times the time complexity is O(nh) or O(n log(n)).
