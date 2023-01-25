@@ -224,9 +224,9 @@ int main()
 {
     // Load in your data into an appropriate structure
     // You will have to load in different amounts of data for the different trials
-    int length = 400000;
+    int length = 1000;
     string currText = "";
-    ifstream inputFile("./sorting-data/data400000.txt");
+    ifstream inputFile("./sorting-data/data1000.txt");
     int sortingArray[length];
     int counter = 0;
 
@@ -240,7 +240,7 @@ int main()
 
     // Note: this code must actually do something
     //  call your function (see functions above), you'll have to measure each separately
-    heapSort(sortingArray, length);
+    selectionSort(sortingArray, length);
     clock_t end = clock();
 
     for (int i = length - 1000; i < length; i++)

@@ -2,13 +2,13 @@
 ## This is for a school project.   
 This project includes implementations for the selection, bubble, merge, heap and merge sort algorithms. I have tested the performance of every algorithm, and later in the README I will explain the time complexity for each of the algorithms individually.
 
-| Algorithm | Elements Sorted | Time (s) |
-| --------- | :--------------:| --------:|
-| Selection |    400000       |    359   |
-|   Bubble  |    400000       |    1018  |
-|   Merge   |    400000       |    0.13  |
-|   Quick   |    400000       |    0.18  |
-|    Heap   |    400000       |    0.23  |
+| Algorithm | Time (s) [400,000] | Time (s) [100,000] | Time (s) [10,000] | Time (s) [1,000] |
+| --------- | :-----------------:|:------------------:|:-----------------:|:-------------------:|
+| Selection |    359   | 23.70   |   0.25    |   0.0028  |
+|   Bubble  |    1018  |   58.67 |   0.39    |   0.0042  |   
+|   Merge   |    0.13  |   0.034 |   0.0029  |   0.00030 |
+|   Quick   |    0.18  | 0.029   |   0.0025  |   0.00019 | 
+|    Heap   |   0.23   | 0.049   |   0.0045  |  0.00045  |
 
 We can see from the data above that all sorting algorithms are not created equally. One can take a fraction of a second to finish sorting hundreds of thousands of numbers, while others can take many minutes. Why is this? If we look at the Big O notation for these algorithms it may clear this up.
 
